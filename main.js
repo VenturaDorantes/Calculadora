@@ -39,8 +39,10 @@ for ( let key of $keys ) {
             }
             $display_input.innerHTML = CleanInput(input);
         } else {
-            input += value;
-            $display_input.innerHTML = CleanInput(input);
+            if(ValidateInput(value)){
+                input += value;
+                $display_input.innerHTML = CleanInput(input);
+            }
         }
     })
 }
@@ -91,4 +93,20 @@ const CleanOutput = (output) => {
     }
 
     return output_array.join('')
+}
+
+// funcion para no poder agregar puntos y operadores despues de otro
+const ValidateInput = (value) => {
+    let last_input = input.slice(-1);
+    let operators = ['+', '-', '*', '/'];
+
+    if(value == '.' && last_input == '.') {
+        return false
+    }
+
+    if(operators.includes(value)) {
+        return operators.includes(last_input) ? false : true
+    }
+
+    return true;
 }
