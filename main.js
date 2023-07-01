@@ -8,10 +8,18 @@ for ( let key of $keys ) {
     const value = key.dataset.key;
 
     key.addEventListener('click', () => {
+        // Funcionamiento ----> AC
         if(value == 'clear'){
             input = '';
             $display_input.innerHTML = '';
             $display_output.innerHTML = '';
+        // Funcionamiento ----> boton de borrar ultimo numero '<'
+        } else if (value == 'backspace') {
+            input = input.slice(0, -1);
+            $display_input.innerHTML = input;
+        // Funcionamiento ----> boton Igual '='
+        } else if (value == '='){
+            let result = eval(input);
         }
     })
 }
