@@ -61,19 +61,19 @@ const CleanInput = (input) => {
     // Cambiando agregando un span en caso de precionar un boton del operador
     for (let i = 0; i < input_array_length; i++) {
         if (input_array[i] == '*') {
-            input_array[i] = `<span class="operator">x</span>`;
+            input_array[i] = ` <span class="operator">x</span> `;
         } else if (input_array[i] == '/') {
-            input_array[i] = `<span class="operator">÷</span>`;
+            input_array[i] = ` <span class="operator">÷</span> `;
         } else if (input_array[i] == '+') {
-            input_array[i] = `<span class="operator">+</span>`;
+            input_array[i] = ` <span class="operator">+</span> `;
         } else if (input_array[i] == '-') {
-            input_array[i] = `<span class="operator">-</span>`;
+            input_array[i] = ` <span class="operator">-</span> `;
         } else if (input_array[i] == '(') {
-            input_array[i] = `<span class="bracket">(</span>`;
+            input_array[i] = ` <span class="bracket">(</span> `;
         } else if (input_array[i] == ')') {
-            input_array[i] = `<span class="brecket">)</span>`;
+            input_array[i] = ` <span class="brecket">)</span> `;
         } else if (input_array[i] == '%') {
-            input_array[i] == `<span class="percent">%</span>`;
+            input_array[i] == ` <span class="percent">%</span> `;
         }
     }
     return input_array.join('');
