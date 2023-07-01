@@ -19,9 +19,15 @@ for ( let key of $keys ) {
             $display_input.innerHTML = CleanInput(input);
         // Funcionamiento ----> boton Igual '='
         } else if (value == '='){
-            let result = eval(input);
-            
+            let result;
+            try {
+                result = eval(PerpareInput(input));
+            } catch(error) {
+                $display_input.innerHTML = ''
+                $display_output.innerHTML = 'No valido';
+            }
             $display_output.innerHTML = CleanOutput(result);
+            
         // Funcionamiento para llaves
         } else if (value == 'brackets') {
             if (input.indexOf('(') == -1 || 
@@ -102,11 +108,48 @@ const ValidateInput = (value) => {
 
     if(value == '.' && last_input == '.') {
         return false
-    }
+    } 
+
+    if(value == '%' && last_input == '%' ) {
+        return false
+    } 
+
 
     if(operators.includes(value)) {
         return operators.includes(last_input) ? false : true
     }
-
+    
     return true;
+}
+
+const PerpareInput = (input) => {
+    let input_array = input.split('');
+    let operator = ['*', '+', '-', '/'];
+
+    console.log('normal', input_array)
+
+    if (input_array.includes('%')){
+        for (let i = 0; i < input_array.length; i++) {
+            if(input_array[i] === '%'){
+                input_array[i] = "/100"
+            }
+        }
+    
+        for (let i = input_array.length; i > 0; i--) {
+            for (let j = 0; j < operator.length; j++){
+                
+                console.log(input_array[i] + ' --- ' + operator[j]) 
+                console.log(input_array[i] === operator[j]) 
+                
+                if(input_array[i] == operator[j]){
+                    const getPercent = input_array.slice(0, i);
+                    console.log('operacion', getPercent.join(''));
+                    break;
+                }
+            }
+        }
+    }
+
+    console.log('convertido', input_array)
+    return input_array.join('')
 }
