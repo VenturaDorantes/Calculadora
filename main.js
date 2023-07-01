@@ -35,7 +35,7 @@ for ( let key of $keys ) {
                         input.indexOf(')') != -1 &&
                         input.lastIndexOf('(') > input.lastIndexOf(')')
             ) {
-                input -= ')';
+                input += ')';
             }
             $display_input.innerHTML = input;
         } else {
