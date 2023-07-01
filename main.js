@@ -16,7 +16,7 @@ for ( let key of $keys ) {
         // Funcionamiento ----> boton de borrar ultimo numero '<'
         } else if (value == 'backspace') {
             input = input.slice(0, -1);
-            $display_input.innerHTML = input;
+            $display_input.innerHTML = CleanInput(input);
         // Funcionamiento ----> boton Igual '='
         } else if (value == '='){
             let result = eval(input);
@@ -37,10 +37,36 @@ for ( let key of $keys ) {
             ) {
                 input += ')';
             }
-            $display_input.innerHTML = input;
+            $display_input.innerHTML = CleanInput(input);
         } else {
             input += value;
-            $display_input.innerHTML = input;
+            $display_input.innerHTML = CleanInput(input);
         }
     })
+}
+
+const CleanInput = (input) => {
+
+    let input_array = input.split('');
+    let input_array_length = input_array.length;
+
+    // Cambiando agregando un span en caso de precionar un boton del operador
+    for (let i = 0; i < input_array_length; i++) {
+        if (input_array[i] == '*') {
+            input_array[i] = `<span class="operator">x</span>`;
+        } else if (input_array[i] == '/') {
+            input_array[i] = `<span class="operator">÷</span>`;
+        } else if (input_array[i] == '+') {
+            input_array[i] = `<span class="operator">+</span>`;
+        } else if (input_array[i] == '-') {
+            input_array[i] = `<span class="operator">-</span>`;
+        } else if (input_array[i] == '(') {
+            input_array[i] = `<span class="bracket">(</span>`;
+        } else if (input_array[i] == ')') {
+            input_array[i] = `<span class="brecket">)</span>`;
+        } else if (input_array[i] == '%') {
+            input_array[i] == `<span class="percent">%</span>`;
+        }
+    }
+    return input_array.join('');
 }
