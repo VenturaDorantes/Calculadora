@@ -2,7 +2,41 @@ const $keys = document.querySelectorAll('.key');
 const $display_input = document.querySelector('.display .input');
 const $display_output = document.querySelector('.display .output');
 
+const $icons = document.querySelectorAll('.btnIcon')
+const $root = document.querySelector(':root');
+const sun = $icons[0]
+const moon = $icons[1]
+
+console.log($icons)
+
+sun.addEventListener('click', () => {
+    if (!sun.classList.value.includes('active')) {
+        moon.classList.remove('active')
+        sun.classList.add('active')
+        document.documentElement.style.setProperty('--bg-black', 'white');
+        document.documentElement.style.setProperty('--bd-keys', '#F8F9FA');
+        document.documentElement.style.setProperty('--txt-white', 'black');
+        document.documentElement.style.setProperty('--btn-shadow', '#00000033');
+        document.documentElement.style.setProperty('--bd-btnIconActive', '#000000');
+    }
+})
+
+moon.addEventListener('click', () => {
+    if (!moon.classList.value.includes('active')) {
+        sun.classList.remove('active')
+        moon.classList.add('active')
+        document.documentElement.style.setProperty('--bg-black', '#22252D');
+        document.documentElement.style.setProperty('--bd-keys', '#292d36');
+        document.documentElement.style.setProperty('--txt-white', 'white');
+        document.documentElement.style.setProperty('--btn-shadow', '#ffffff33');
+        document.documentElement.style.setProperty('--bd-btnIconActive', '#ffffff');
+    }
+})
+
+
 let input = '';
+
+// cambio de color
 
 for ( let key of $keys ) {
     const value = key.dataset.key;
