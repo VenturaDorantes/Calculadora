@@ -63,7 +63,7 @@ for ( let key of $keys ) {
                 result = eval(PerpareInput(input));
             } catch(error) {
                 $display_input.innerHTML = ''
-                $display_output.innerHTML = 'No valido';
+                $display_output.innerHTML = 'syntax error';
             }
             $display_output.innerHTML = CleanOutput(result);
             
@@ -127,9 +127,11 @@ const CleanOutput = (output) => {
     let output_array = output_string.split('');
 
     if(output_array.length > 3) {
-        for (let i = output_array.length - 3; i > 0; i -= 3) {
-            output_array.splice(i, 0, ',');
-        }
+        if (!(output_array[0] == '-' && output_array.length === 4)) {
+            for (let i = output_array.length - 3; i > 0; i -= 3) {
+                output_array.splice(i, 0, ',');
+            }
+        } 
     }
 
     if(decimal) {
@@ -152,7 +154,6 @@ const ValidateInput = (value) => {
     if(value == '%' && last_input == '%' ) {
         return false
     } 
-
 
     if(operators.includes(value)) {
         return operators.includes(last_input) ? false : true
