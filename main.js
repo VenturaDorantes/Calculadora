@@ -7,8 +7,6 @@ const $root = document.querySelector(':root');
 const sun = $icons[0]
 const moon = $icons[1]
 
-
-
 sun.addEventListener('click', () => {
     if (!sun.classList.value.includes('active')) {
         moon.classList.remove('active');
