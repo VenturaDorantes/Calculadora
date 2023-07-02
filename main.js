@@ -195,7 +195,6 @@ const PerpareInput = (input) => {
     
                         const resultOperation = operationPercent * numberPercent;
     
-    
                         const resultFinally = eval(operationPercent + getOperator + resultOperation)
                         console.log('operation', operationPercent + getOperator + resultOperation)
                         console.log('resultFinally', resultFinally)
