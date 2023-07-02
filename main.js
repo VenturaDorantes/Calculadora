@@ -3,7 +3,7 @@ const $display_input = document.querySelector('.display .input');
 const $display_output = document.querySelector('.display .output');
 
 const $icons = document.querySelectorAll('.btnIcon')
-const $root = document.querySelector(':root');
+const $styleColor = document.documentElement.style
 const sun = $icons[0]
 const moon = $icons[1]
 
@@ -11,11 +11,11 @@ sun.addEventListener('click', () => {
     if (!sun.classList.value.includes('active')) {
         moon.classList.remove('active');
         sun.classList.add('active');
-        document.documentElement.style.setProperty('--bg-black', 'white');
-        document.documentElement.style.setProperty('--bd-keys', '#E9ECEF');
-        document.documentElement.style.setProperty('--txt-white', 'black');
-        document.documentElement.style.setProperty('--btn-shadow', '#00000033');
-        document.documentElement.style.setProperty('--bd-btnIconActive', '#000000');
+        $styleColor.setProperty('--bg-black', 'white');
+        $styleColor.setProperty('--bd-keys', '#E9ECEF');
+        $styleColor.setProperty('--txt-white', 'black');
+        $styleColor.setProperty('--btn-shadow', '#00000033');
+        $styleColor.setProperty('--bd-btnIconActive', '#000000');
         localStorage.setItem('pageColor', 'sun');
     }
 })
@@ -24,11 +24,11 @@ moon.addEventListener('click', () => {
     if (!moon.classList.value.includes('active')) {
         sun.classList.remove('active')
         moon.classList.add('active')
-        document.documentElement.style.setProperty('--bg-black', '#22252D');
-        document.documentElement.style.setProperty('--bd-keys', '#292d36');
-        document.documentElement.style.setProperty('--txt-white', 'white');
-        document.documentElement.style.setProperty('--btn-shadow', '#ffffff33');
-        document.documentElement.style.setProperty('--bd-btnIconActive', '#ffffff');
+        $styleColor.setProperty('--bg-black', '#22252D');
+        $styleColor.setProperty('--bd-keys', '#292d36');
+        $styleColor.setProperty('--txt-white', 'white');
+        $styleColor.setProperty('--btn-shadow', '#ffffff33');
+        $styleColor.setProperty('--bd-btnIconActive', '#ffffff');
         localStorage.setItem('pageColor', 'moon');
     }
 })
@@ -175,11 +175,9 @@ const PerpareInput = (input) => {
                 input_array[i] = "/100"
             }
         }
-        
     
         for (let i = input_array.length; i > 0; i--) {
-
-            
+   
             for (let j = 0; j < operator.length; j++){
 
                 if(input_array[i] === operator[j]){
